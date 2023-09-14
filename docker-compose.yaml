@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15-alpine
+    restart: no
+    environment:
+      - POSTGRES_USER=pokedb
+      - POSTGRES_PASSWORD=pokedb
+    ports:
+      - '5432:5432'

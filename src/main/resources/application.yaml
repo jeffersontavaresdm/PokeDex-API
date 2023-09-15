@@ -1,1 +1,9 @@
-
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pokedb
+    username: pokedb
+    password: pokedb
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create

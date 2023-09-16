@@ -1,9 +1,11 @@
-spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/pokedb
-    username: pokedb
-    password: pokedb
-    driver-class-name: org.postgresql.Driver
-  jpa:
-    hibernate:
-      ddl-auto: create
+#spring:
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/pokedb
+#    username: pokedb
+#    password: pokedb
+#    driver-class-name: org.postgresql.Driver
+#  jpa:
+#    hibernate:
+#      ddl-auto: create
+
+baseUrl: "https://pokeapi.co/api/v2/pokemon/"

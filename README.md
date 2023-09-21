@@ -67,8 +67,9 @@ Para executar o projeto localmente usando Gradle, siga as etapas abaixo:
 Para executar o projeto em um contêiner Docker, siga as etapas abaixo:
 
 1. Clone este repositório: `git clone https://github.com/jeffersontavaresdm/pokedex-microservice.git`
-2. Certifique-se de que o Gradle já construiu a aplicação: `./gradlew build`.
-3. Use o comando Docker Compose para criar a imagem Docker e executar a aplicação: `docker-compose up --build`
+2. Navegue até o diretório do projeto: `cd pokedex-microservice`
+3. Certifique-se de que o Gradle já construiu a aplicação: `./gradlew build`.
+4. Use o comando Docker Compose para criar a imagem Docker e executar a aplicação: `docker-compose up --build`
 
 Em ambos os casos o aplicativo estará disponível em `http://localhost:8080`.
 

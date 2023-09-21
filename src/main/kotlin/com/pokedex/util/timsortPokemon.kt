@@ -2,13 +2,16 @@ package com.pokedex.util
 
 import com.pokedex.entity.Pokemon
 import com.pokedex.enums.SortType
+import kotlin.math.min
 
 fun timsort(pokemons: MutableList<Pokemon>, sortType: SortType) {
   val minRun = calculateMinRun(pokemons.size)
 
-  for (i in 0 until pokemons.size step minRun) {
-    val runSize = if (i + minRun <= pokemons.size) minRun else pokemons.size - i
+  var i = 0
+  while (i < pokemons.size) {
+    val runSize = min(minRun, pokemons.size - i)
     insertionSort(pokemons, i, i + runSize, sortType)
+    i += runSize
   }
 
   mergeRuns(pokemons, minRun, sortType)
@@ -30,6 +33,7 @@ private fun insertionSort(pokemons: MutableList<Pokemon>, start: Int, end: Int, 
   for (i in start + 1 until end) {
     val current = pokemons[i]
     var j = i - 1
+
     while (j >= start && compare(pokemons[j], current, sortType) > 0) {
       pokemons[j + 1] = pokemons[j]
       j--
@@ -53,17 +57,13 @@ private fun mergeRuns(pokemons: MutableList<Pokemon>, minRun: Int, sortType: Sor
   var end = 0
 
   while (end < pokemons.size) {
-    // Encontre o próximo run
-    end = kotlin.math.min(start + minRun, pokemons.size)
+    end = min(start + minRun, pokemons.size)
     insertionSort(pokemons, start, end, sortType)
 
-    // Adicione o run à pilha
     stack.add(Pair(start, end))
 
-    // Mesclar runs adjacentes
     mergeAdjacentRuns(pokemons, stack, sortType)
 
-    // Atualize o início para o próximo run
     start = end
   }
 }
@@ -73,9 +73,7 @@ private fun mergeAdjacentRuns(pokemons: MutableList<Pokemon>, stack: MutableList
     val (run1Start, run1End) = stack[stack.size - 2]
     val (run2Start, run2End) = stack[stack.size - 1]
 
-    // Verifique se é possível fazer a fusão
     if (run1End <= run2Start) {
-      // Faça a fusão dos runs
       val mergedRun = mutableListOf<Pokemon>()
       var i = run1Start
       var j = run2Start
@@ -100,36 +98,15 @@ private fun mergeAdjacentRuns(pokemons: MutableList<Pokemon>, stack: MutableList
         j++
       }
 
-      // Substitua os runs mesclados na lista original
       for (k in run1Start until run2End) {
         pokemons[k] = mergedRun[k - run1Start]
       }
 
-      // Remova os runs originais e adicione o novo run mesclado
       stack.removeAt(stack.size - 1)
       stack.removeAt(stack.size - 1)
       stack.add(Pair(run1Start, run2End))
     } else {
-      break // Não é possível mesclar mais runs
+      break
     }
   }
 }
-
-//fun main() {
-//  val pokemons = mutableListOf(
-//    Pokemon("Venusaur"),
-//    Pokemon("Ivysaur"),
-//    Pokemon("Bulbasaur"),
-//    Pokemon("ZZ"),
-//    Pokemon("AAAAAA"),
-//  )
-//
-//  val start = System.currentTimeMillis()
-//  timsort(pokemons, SortType.ALPHABETICAL)
-//  val end = System.currentTimeMillis()
-//
-//  pokemons.forEach { pokemon -> println(pokemon.name) }
-//
-//  println()
-//  println("${end - start} millis")
-//}

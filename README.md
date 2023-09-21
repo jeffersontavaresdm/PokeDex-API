@@ -27,7 +27,7 @@ O serviço é a camada intermediária que processa as solicitações vindas do c
 - Realiza a ordenação dos pokémons usando o algoritmo TimSort.
 - Destaca a parte correspondente à consulta no nome do pokémon (caso necessário).
 
-# Algoritmo de Ordenação TimSort
+### Algoritmo de Ordenação TimSort
 
 O algoritmo de ordenação TimSort foi escolhido para ordenar a lista de pokémons neste projeto. TimSort é uma variação do Merge Sort otimizada para lidar com dados parcialmente ordenados e pequenos grupos de dados chamados "runs".
 

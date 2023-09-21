@@ -13,8 +13,6 @@ O controller é responsável por definir os endpoints REST que podem ser acessad
 - `GET /pokemons`: Permite aos usuários pesquisar pokémons por nome, com opções de ordenação alfabética ou por comprimento do nome.
 - `GET /pokemons/highlight`: Semelhante ao endpoint anterior, mas destaca a parte do nome do pokémon que corresponde à consulta.
 
-A ordenação é implementada usando o algoritmo TimSort.
-
 ### Service
 
 O serviço é a camada intermediária que processa as solicitações vindas do controller. Ele realiza as seguintes tarefas:

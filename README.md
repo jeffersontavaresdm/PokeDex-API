@@ -2,6 +2,11 @@
 
 Este é um microserviço que consome dados da PokéAPI e oferece endpoints para pesquisar e ordenar pokémons.
 
+## Tecnologias
+- Kotlin
+- Spring Boot
+- Docker
+
 ## Estrutura do Projeto
 
 O projeto é dividido em três partes principais:
@@ -72,12 +77,6 @@ Para executar o projeto em um contêiner Docker, siga as etapas abaixo:
 4. Use o comando Docker Compose para criar a imagem Docker e executar a aplicação: `docker-compose up --build`
 
 Em ambos os casos o aplicativo estará disponível em `http://localhost:8080`.
-
-## Requisitos Adicionais
-
-- Java 11 ou superior
-- Kotlin 1.4 ou superior
-- Gradle
 
 ## Testes Unitários
 
